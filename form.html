@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video to Redirect</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #121212; /* Default background */
+      overflow: hidden;
+      color: white;
+    }
+
+    video {
+      width: 100vw;
+      height: 100vh; /* Full height for PC */
+      object-fit: cover;
+    }
+
+    /* Media Query for Mobile View */
+    @media (max-width: 768px) {
+      body {
+        background-color: black; /* Black background on mobile */
+      }
+
+      video {
+        height: 30vh; /* Set height to 30% of the viewport on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  <video id="videoPlayer" autoplay muted>
+    <source src="Video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    // Get the video element
+    const videoPlayer = document.getElementById("videoPlayer");
+
+    // Set the video to full screen on load
+    if (videoPlayer.requestFullscreen) {
+      videoPlayer.requestFullscreen();
+    } else if (videoPlayer.mozRequestFullScreen) { // Firefox
+      videoPlayer.mozRequestFullScreen();
+    } else if (videoPlayer.webkitRequestFullscreen) { // Chrome, Safari, Opera
+      videoPlayer.webkitRequestFullscreen();
+    } else if (videoPlayer.msRequestFullscreen) { // IE/Edge
+      videoPlayer.msRequestFullscreen();
+    }
+
+    // Redirect after 6 seconds
+    setTimeout(function() {
+      window.location.href = "https://aniflix.in";
+    }, 6000);
+  </script>
+</body>
+</html>
